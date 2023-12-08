@@ -1,19 +1,21 @@
 import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { BtnSearch, FormSearch, Header, InputSearch } from './SearchbarStyled';
 
 export const Searchbar = () => {
   return (
-    <header className="searchbar">
-      <form className="form">
-        <button type="submit" className="button">
-          <span className="button-label">Search</span>
-        </button>
+    <Header className="searchbar">
+      <FormSearch className="form">
+        <BtnSearch type="submit" className="button">
+          <FaSearch size={40} />
+        </BtnSearch>
 
-        <input
+        <InputSearch
           className="input"
           type="text"
           placeholder="Search images and photos"
         />
-      </form>
-    </header>
+      </FormSearch>
+    </Header>
   );
 };

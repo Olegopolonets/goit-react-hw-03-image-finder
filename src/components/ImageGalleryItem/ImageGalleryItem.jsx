@@ -1,11 +1,12 @@
 import React from 'react';
+import { Card } from './ImageGalleryItemStyled';
 
 export const ImageGalleryItem = ({ webformatURL, type }) => {
   return (
-    <div>
-      <li className="gallery-item">
+    <>
+      <Card className="gallery-item">
         <img src={webformatURL} alt={type} />
-      </li>
-    </div>
+      </Card>
+    </>
   );
 };
