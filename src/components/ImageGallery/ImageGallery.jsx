@@ -2,6 +2,7 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { fetchImages } from 'components/Services/api';
 import React from 'react';
 import { CardsList } from './ImageGalleryStuled';
+import { Button } from 'components/Button/Button';
 
 export class ImageGallery extends React.Component {
   state = {
@@ -22,7 +23,7 @@ export class ImageGallery extends React.Component {
             return <ImageGalleryItem key={item.id} {...item} />;
           })}
         </CardsList>
-        <button>Load more</button>
+        <Button />
       </div>
     );
   }
