@@ -2,6 +2,21 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import React from 'react';
 import { CardsList } from './ImageGalleryStuled';
 
+export const ImageGallery = ({ imagesData, openModal }) => {
+  return (
+    <div>
+      <CardsList>
+        {imagesData.map(item => {
+          return (
+            <ImageGalleryItem key={item.id} {...item} openModal={openModal} />
+          );
+        })}
+      </CardsList>
+      {/* <Button click={this.handleLoadMore} /> */}
+    </div>
+  );
+};
+
 // export class ImageGallery extends React.Component {
 //   state = {
 //     imagesData: [],
@@ -42,16 +57,3 @@ import { CardsList } from './ImageGalleryStuled';
 //     );
 //   }
 // }
-
-export const ImageGallery = ({ imagesData }) => {
-  return (
-    <div>
-      <CardsList>
-        {imagesData.map(item => {
-          return <ImageGalleryItem key={item.id} {...item} />;
-        })}
-      </CardsList>
-      {/* <Button click={this.handleLoadMore} /> */}
-    </div>
-  );
-};

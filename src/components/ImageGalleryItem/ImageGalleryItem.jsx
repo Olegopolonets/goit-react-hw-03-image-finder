@@ -1,11 +1,22 @@
 import React from 'react';
 import { Card, CardImage } from './ImageGalleryItemStyled';
 
-export const ImageGalleryItem = ({ webformatURL, type }) => {
+export const ImageGalleryItem = ({
+  id,
+  webformatURL,
+  type,
+  largeImageURL,
+  openModal,
+}) => {
   return (
     <>
       <Card>
-        <CardImage src={webformatURL} alt={type} />
+        <CardImage
+          onClick={() => openModal(largeImageURL)}
+          src={webformatURL}
+          alt={type}
+          id={id}
+        />
       </Card>
     </>
   );

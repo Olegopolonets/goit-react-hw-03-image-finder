@@ -13,6 +13,8 @@ export class App extends React.Component {
     page: 1,
     loading: false,
     total: 0,
+    modalImageUrl: '',
+    isModalOpen: false,
   };
 
   async componentDidMount() {
@@ -49,17 +51,37 @@ export class App extends React.Component {
   handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
+  /* */
+  openModal = imgUrl => {
+    this.setState(prevState => ({
+      isModalOpen: !prevState.isModalOpen,
+      modalImageUrl: imgUrl,
+    }));
+  };
+
+  closeModal = () => {
+    this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
+  };
+  /* */
   render() {
     return (
       <div>
         <Searchbar />
         <Conteiner>
-          <ImageGallery imagesData={this.state.imagesData} />
+          <ImageGallery
+            imagesData={this.state.imagesData}
+            openModal={this.openModal}
+          />
           {this.state.loading === true ? <Loader /> : null}
           {this.state.total > this.state.imagesData.length ? (
             <Button click={this.handleLoadMore} />
           ) : null}
-          {/* <Modal imagesData={this.state.imagesData} /> */}
+          {this.state.isModalOpen && (
+            <Modal
+              modalImageUrl={this.state.modalImageUrl}
+              closeModal={this.closeModal}
+            />
+          )}
         </Conteiner>
       </div>
     );
