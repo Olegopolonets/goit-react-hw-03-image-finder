@@ -45,7 +45,7 @@ export class App extends React.Component {
   }
 
   handleLoadMore = () => {
-    this.setState(prevState => ({ page: prevState.page + 12 }));
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
   render() {
     return (
