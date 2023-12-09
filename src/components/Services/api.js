@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL =
-  'https://pixabay.com/api/?key=40711128-36f054e20f11fdfe312beb589&q=';
+  'https://pixabay.com/api/?key=40711128-36f054e20f11fdfe312beb589&q=tesla';
 
 export const fetchImages = async configParams => {
   const {
@@ -19,6 +19,13 @@ export const fetchImages = async configParams => {
   return hits;
 };
 
+export const allImages = async () => {
+  const {
+    data: { totalHits },
+  } = await axios.get('', {});
+  console.log(totalHits);
+  return totalHits;
+};
 /* JS */
 // export async function getPhotosPixybay(userInput, page, per_page) {
 //     const params = new URLSearchParams({

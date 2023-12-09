@@ -5,12 +5,14 @@ import { Conteiner } from './Container/Conteiner';
 import { Loader } from './Loader/Loader';
 import { fetchImages } from 'components/Services/api';
 import { Button } from './Button/Button';
+import { Modal } from './Modal/Modal';
 
 export class App extends React.Component {
   state = {
     imagesData: [],
     page: 1,
     loading: false,
+    total: 0,
   };
 
   async componentDidMount() {
@@ -18,7 +20,7 @@ export class App extends React.Component {
       this.setState({ loading: true });
       const images = await fetchImages({ per_page: 12 });
       console.log(images);
-      this.setState({ imagesData: [...images] });
+      this.setState({ imagesData: [...images], total: 55 });
     } catch (error) {
       console.error();
     } finally {
@@ -54,7 +56,10 @@ export class App extends React.Component {
         <Conteiner>
           <ImageGallery imagesData={this.state.imagesData} />
           {this.state.loading === true ? <Loader /> : null}
-          <Button click={this.handleLoadMore} />
+          {this.state.total > this.state.imagesData.length ? (
+            <Button click={this.handleLoadMore} />
+          ) : null}
+          {/* <Modal imagesData={this.state.imagesData} /> */}
         </Conteiner>
       </div>
     );
