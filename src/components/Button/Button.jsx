@@ -1,10 +1,12 @@
 import React from 'react';
-import { LoadMoreBtn } from './ButtonStyled';
+import { LoadMoreBtn, WrapperBtn } from './ButtonStyled';
 
 export const Button = () => {
   return (
     <>
-      <LoadMoreBtn>Load more</LoadMoreBtn>
+      <WrapperBtn>
+        <LoadMoreBtn>Load more</LoadMoreBtn>
+      </WrapperBtn>
     </>
   );
 };

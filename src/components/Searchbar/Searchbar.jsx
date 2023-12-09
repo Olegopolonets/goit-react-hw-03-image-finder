@@ -7,7 +7,11 @@ export const Searchbar = () => {
     <Header className="searchbar">
       <FormSearch className="form">
         <BtnSearch type="submit" className="button">
-          <FaSearch size={40} />
+          <FaSearch
+            size={40}
+            onMouseOver={({ target }) => (target.style.color = 'white')}
+            onMouseOut={({ target }) => (target.style.color = 'black')}
+          />
         </BtnSearch>
 
         <InputSearch
@@ -19,3 +23,6 @@ export const Searchbar = () => {
     </Header>
   );
 };
+
+// onMouseOver={({ target }) => (target.style.color = 'white')}
+// onMouseOut={({ target }) => (target.style.color = 'black')}

@@ -65,3 +65,10 @@ export const BtnSearch = styled.button`
     transform: scale(1.1);
   }
 `;
+
+// export const FaSearch = styled.button`
+//   background: red;
+//   &:hover {
+//     color: white;
+//   }
+// `;
