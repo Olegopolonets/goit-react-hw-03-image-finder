@@ -9,6 +9,10 @@ export const fetchImages = async configParams => {
   } = await axios.get('', {
     params: {
       per_page: 12,
+      page: 1,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
       ...configParams,
     },
   });
@@ -20,9 +24,7 @@ export const fetchImages = async configParams => {
 //     const params = new URLSearchParams({
 //       key: API_KEY,
 //       q: userInput,
-//       image_type: 'photo',
-//       orientation: 'horizontal',
-//       safesearch: true,
+//
 //       per_page,
 //       page,
 //     });

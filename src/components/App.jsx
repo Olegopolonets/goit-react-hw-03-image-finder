@@ -3,6 +3,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Conteiner } from './Container/Conteiner';
 import { Loader } from './Loader/Loader';
+// import { Button } from './Button/Button';
 
 export class App extends React.Component {
   state = {
@@ -15,6 +16,7 @@ export class App extends React.Component {
         <Conteiner>
           <ImageGallery />
           {this.state.loading === true ? <Loader /> : null}
+          {/* <Button /> */}
         </Conteiner>
       </div>
     );

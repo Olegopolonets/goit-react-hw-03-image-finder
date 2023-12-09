@@ -6,24 +6,40 @@ import { Button } from 'components/Button/Button';
 
 export class ImageGallery extends React.Component {
   state = {
-    images: [],
-    loading: false,
+    imagesData: [],
+    page: 0,
   };
+
   async componentDidMount() {
-    const images = await fetchImages();
+    const images = await fetchImages({ per_page: 12 });
     console.log(images);
-    this.setState({ images: [...images] });
+    this.setState({ imagesData: [...images] });
   }
+
+  async componentDidUpdate(_, prevState) {
+    if (prevState.page !== this.state.page) {
+      const [...images] = await fetchImages({
+        per_page: 12,
+        page: this.state.page,
+      });
+      console.log(images);
+      this.setState({ imagesData: [...prevState.imagesData, ...images] });
+    }
+  }
+
+  handleLoadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 12 }));
+  };
 
   render() {
     return (
       <div>
         <CardsList>
-          {this.state.images.map(item => {
+          {this.state.imagesData.map(item => {
             return <ImageGalleryItem key={item.id} {...item} />;
           })}
         </CardsList>
-        <Button />
+        <Button click={this.handleLoadMore} />
       </div>
     );
   }
