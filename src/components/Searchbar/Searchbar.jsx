@@ -2,10 +2,15 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { BtnSearch, FormSearch, Header, InputSearch } from './SearchbarStyled';
 
-export const Searchbar = () => {
+export const Searchbar = ({ onSubmit, userInput }) => {
   return (
     <Header className="searchbar">
-      <FormSearch className="form">
+      <FormSearch
+        className="form"
+        onSubmit={event => {
+          onSubmit(event);
+        }}
+      >
         <BtnSearch type="submit" className="button">
           <FaSearch
             size={40}
@@ -18,6 +23,7 @@ export const Searchbar = () => {
           className="input"
           type="text"
           placeholder="Search images and photos"
+          name="userInput"
         />
       </FormSearch>
     </Header>

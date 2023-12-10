@@ -1,22 +1,5 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL =
-//   'https://pixabay.com/api/?key=40711128-36f054e20f11fdfe312beb589&q=tesla';
-
-// export const fetchImages = async configParams => {
-//   const {
-//     data: { hits },
-//   } = await axios.get('', {
-//     params: {
-//       image_type: 'photo',
-//       orientation: 'horizontal',
-//       safesearch: true,
-//       ...configParams,
-//     },
-//   });
-//   return hits;
-// };
-
 const API_KEY = '40711128-36f054e20f11fdfe312beb589';
 const BASE_URL = 'https://pixabay.com/api/';
 
@@ -35,6 +18,23 @@ export async function fetchImages(userInput, page) {
   console.log(res.data);
   return res.data.hits;
 }
+
+// axios.defaults.baseURL =
+//   'https://pixabay.com/api/?key=40711128-36f054e20f11fdfe312beb589&q=tesla';
+
+// export const fetchImages = async configParams => {
+//   const {
+//     data: { hits },
+//   } = await axios.get('', {
+//     params: {
+//       image_type: 'photo',
+//       orientation: 'horizontal',
+//       safesearch: true,
+//       ...configParams,
+//     },
+//   });
+//   return hits;
+// };
 
 // export const allImages = async () => {
 //   const {

@@ -11,7 +11,7 @@ export class App extends React.Component {
   state = {
     imagesData: [],
     page: 1,
-    userInput: 'tesla',
+    userInput: '',
     loading: false,
     total: 0,
     modalImageUrl: '',
@@ -32,6 +32,19 @@ export class App extends React.Component {
   }
 
   async componentDidUpdate(_, prevState) {
+    if (this.state.userInput !== prevState.userInput) {
+      try {
+        this.setState({ loading: true });
+        const images = await fetchImages(this.state.userInput, this.state.page);
+        console.log(images);
+        this.setState({ imagesData: [...images], total: 55 });
+      } catch (error) {
+        console.error();
+      } finally {
+        this.setState({ loading: false });
+      }
+    }
+
     if (prevState.page !== this.state.page) {
       try {
         this.setState({ loading: true });
@@ -61,10 +74,20 @@ export class App extends React.Component {
     this.setState(prevState => ({ isModalOpen: !prevState.isModalOpen }));
   };
   /* */
+
+  /*  */
+  onSubmit = event => {
+    event.preventDefault();
+    this.setState({ page: 1, loading: true });
+    const userInput = event.currentTarget.elements.userInput.value;
+    this.setState({ userInput: userInput });
+  };
+  /*  */
+
   render() {
     return (
       <div>
-        <Searchbar />
+        <Searchbar onSubmit={this.onSubmit} />
         <Conteiner>
           <ImageGallery
             imagesData={this.state.imagesData}
