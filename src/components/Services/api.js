@@ -9,14 +9,14 @@ export async function fetchImages(userInput, page) {
     q: userInput,
     image_type: 'photo',
     orientation: 'horizontal',
-    safesearch: true,
+    safesearch: false,
     per_page: 12,
     page,
   });
   const res = await axios.get(`${BASE_URL}?${params}`);
 
   console.log(res.data);
-  return res.data.hits;
+  return res.data;
 }
 
 // axios.defaults.baseURL =
