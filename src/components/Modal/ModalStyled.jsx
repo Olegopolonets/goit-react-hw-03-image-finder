@@ -11,12 +11,6 @@ export const StyledModal = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
 
-  /* div {
-    width: 80%;
-    height: 80%;
-    background-color: white;
-    object-fit: scale-down;
-  } */
   img {
     width: 90%;
     height: 90%;

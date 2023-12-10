@@ -11,6 +11,7 @@ export class App extends React.Component {
   state = {
     imagesData: [],
     page: 1,
+    userInput: 'tesla',
     loading: false,
     total: 0,
     modalImageUrl: '',
@@ -20,7 +21,7 @@ export class App extends React.Component {
   async componentDidMount() {
     try {
       this.setState({ loading: true });
-      const images = await fetchImages({ per_page: 12 });
+      const images = await fetchImages(this.state.userInput, this.state.page);
       console.log(images);
       this.setState({ imagesData: [...images], total: 55 });
     } catch (error) {
@@ -34,10 +35,7 @@ export class App extends React.Component {
     if (prevState.page !== this.state.page) {
       try {
         this.setState({ loading: true });
-        const [...images] = await fetchImages({
-          per_page: 12,
-          page: this.state.page,
-        });
+        const images = await fetchImages(this.state.userInput, this.state.page);
         console.log(images);
         this.setState({ imagesData: [...prevState.imagesData, ...images] });
       } catch (error) {
