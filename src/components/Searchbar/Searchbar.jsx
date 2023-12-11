@@ -6,8 +6,8 @@ export const Searchbar = ({ onSubmit, userInput }) => {
   return (
     <Header className="searchbar">
       <FormSearch
-        onSubmit={event => {
-          onSubmit(event);
+        onSubmit={() => {
+          onSubmit();
         }}
       >
         <BtnSearch type="submit">
