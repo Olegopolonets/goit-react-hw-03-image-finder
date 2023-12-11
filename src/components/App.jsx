@@ -50,34 +50,6 @@ export class App extends React.Component {
         this.setState({ loading: false });
       }
     }
-
-    // if (this.state.userInput !== prevState.userInput) {
-    //   try {
-    //     this.setState({ loading: true });
-    //     const images = await fetchImages(this.state.userInput, this.state.page);
-    //     console.log(images);
-    //     this.setState({ imagesData: [...images.hits], total: images.total });
-    //   } catch (error) {
-    //     console.error();
-    //   } finally {
-    //     this.setState({ loading: false });
-    //   }
-    // }
-
-    // if (prevState.page !== this.state.page) {
-    //   try {
-    //     this.setState({ loading: true });
-    //     const images = await fetchImages(this.state.userInput, this.state.page);
-    //     console.log(images);
-    //     this.setState({
-    //       imagesData: [...prevState.imagesData, ...images.hits],
-    //     });
-    //   } catch (error) {
-    //     console.error();
-    //   } finally {
-    //     this.setState({ loading: false });
-    //   }
-    // }
   }
 
   handleLoadMore = () => {
