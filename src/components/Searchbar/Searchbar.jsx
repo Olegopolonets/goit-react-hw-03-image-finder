@@ -6,12 +6,11 @@ export const Searchbar = ({ onSubmit, userInput }) => {
   return (
     <Header className="searchbar">
       <FormSearch
-        className="form"
         onSubmit={event => {
           onSubmit(event);
         }}
       >
-        <BtnSearch type="submit" className="button">
+        <BtnSearch type="submit">
           <FaSearch
             size={40}
             onMouseOver={({ target }) => (target.style.color = 'white')}
@@ -20,7 +19,6 @@ export const Searchbar = ({ onSubmit, userInput }) => {
         </BtnSearch>
 
         <InputSearch
-          className="input"
           type="text"
           placeholder="Search images and photos"
           name="userInput"
@@ -29,6 +27,3 @@ export const Searchbar = ({ onSubmit, userInput }) => {
     </Header>
   );
 };
-
-// onMouseOver={({ target }) => (target.style.color = 'white')}
-// onMouseOut={({ target }) => (target.style.color = 'black')}
