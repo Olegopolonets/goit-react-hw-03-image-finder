@@ -11,7 +11,7 @@ export class App extends React.Component {
   state = {
     imagesData: [],
     page: 1,
-    userInput: '',
+    userInput: 'locomotive',
     loading: false,
     total: 0,
     modalImageUrl: '',

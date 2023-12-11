@@ -19,7 +19,7 @@ export class Modal extends React.Component {
     const { modalImageUrl, closeModal } = this.props;
     return (
       <StyledModal onClick={closeModal}>
-        <img className="modalImg" src={modalImageUrl} alt="Modal" />
+        <img src={modalImageUrl} alt="Modal" />
       </StyledModal>
     );
   }
