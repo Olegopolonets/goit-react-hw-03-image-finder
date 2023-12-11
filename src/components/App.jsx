@@ -32,12 +32,18 @@ export class App extends React.Component {
   }
 
   async componentDidUpdate(_, prevState) {
-    if (this.state.userInput !== prevState.userInput) {
+    if (
+      this.state.userInput !== prevState.userInput ||
+      prevState.page !== this.state.page
+    ) {
       try {
         this.setState({ loading: true });
         const images = await fetchImages(this.state.userInput, this.state.page);
         console.log(images);
-        this.setState({ imagesData: [...images.hits], total: images.total });
+        this.setState(prevState => ({
+          imagesData: [...prevState.imagesData, ...images.hits],
+          total: images.total,
+        }));
       } catch (error) {
         console.error();
       } finally {
@@ -45,26 +51,39 @@ export class App extends React.Component {
       }
     }
 
-    if (prevState.page !== this.state.page) {
-      try {
-        this.setState({ loading: true });
-        const images = await fetchImages(this.state.userInput, this.state.page);
-        console.log(images);
-        this.setState({
-          imagesData: [...prevState.imagesData, ...images.hits],
-        });
-      } catch (error) {
-        console.error();
-      } finally {
-        this.setState({ loading: false });
-      }
-    }
+    // if (this.state.userInput !== prevState.userInput) {
+    //   try {
+    //     this.setState({ loading: true });
+    //     const images = await fetchImages(this.state.userInput, this.state.page);
+    //     console.log(images);
+    //     this.setState({ imagesData: [...images.hits], total: images.total });
+    //   } catch (error) {
+    //     console.error();
+    //   } finally {
+    //     this.setState({ loading: false });
+    //   }
+    // }
+
+    // if (prevState.page !== this.state.page) {
+    //   try {
+    //     this.setState({ loading: true });
+    //     const images = await fetchImages(this.state.userInput, this.state.page);
+    //     console.log(images);
+    //     this.setState({
+    //       imagesData: [...prevState.imagesData, ...images.hits],
+    //     });
+    //   } catch (error) {
+    //     console.error();
+    //   } finally {
+    //     this.setState({ loading: false });
+    //   }
+    // }
   }
 
   handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
-  /* */
+  /* modal */
   openModal = imgUrl => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen,
@@ -77,12 +96,11 @@ export class App extends React.Component {
   };
   /* */
 
-  /*  */
+  /* form submit  */
   onSubmit = event => {
     event.preventDefault();
-    this.setState({ page: 1 });
     const userInput = event.currentTarget.elements.userInput.value;
-    this.setState({ userInput: userInput });
+    this.setState({ userInput: userInput, page: 1, imagesData: [] });
   };
   /*  */
 
