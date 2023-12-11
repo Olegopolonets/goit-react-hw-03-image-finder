@@ -3,7 +3,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Conteiner } from './Container/Conteiner';
 import { Loader } from './Loader/Loader';
-import { fetchImages } from 'components/Services/api';
+import { fetchImages } from 'Services/api';
 import { Button } from './Button/Button';
 import { Modal } from './Modal/Modal';
 
@@ -80,7 +80,7 @@ export class App extends React.Component {
   /*  */
   onSubmit = event => {
     event.preventDefault();
-    this.setState({ page: 1, loading: true });
+    this.setState({ page: 1 });
     const userInput = event.currentTarget.elements.userInput.value;
     this.setState({ userInput: userInput });
   };
