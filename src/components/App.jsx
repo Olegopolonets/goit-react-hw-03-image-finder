@@ -11,7 +11,7 @@ export class App extends React.Component {
   state = {
     imagesData: [],
     page: 1,
-    userInput: 'locomotive',
+    userInput: '',
     loading: false,
     total: 0,
     modalImageUrl: '',
@@ -89,6 +89,7 @@ export class App extends React.Component {
           {this.state.total > this.state.imagesData.length ? (
             <Button click={this.handleLoadMore} />
           ) : null}
+          {/* {this.state.imagesData.length !== 0 ? <Button updatePage={this.handleLoadMore} /> : null } */}
           {this.state.isModalOpen && (
             <Modal
               modalImageUrl={this.state.modalImageUrl}
